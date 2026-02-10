@@ -25,6 +25,21 @@ function convertValues(event) {
       currency: "EUR",
     }).format(inputCorrencyValue / euroToday);
   }
+  if (currencySelect.value == "libra") {
+    currencyValue.innerHTML = new Intl.NumberFormat("GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputCorrencyValue / euroToday);
+  }
+  if (currencySelect.value == "btc") {
+    currencyValue.innerHTML = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "BTC",
+      currencyDisplay: "narrowSymbol", // Tenta exibir ₿
+      minimumFractionDigits: 4,
+      maximumFractionDigits: 8,
+    }).format(inputCorrencyValue / euroToday);
+  }
 
   currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -40,13 +55,21 @@ function changeCurrency() {
   if (currencySelect.value == "dolar") {
     currencyName.innerHTML = "Dólar Americano";
     currencyImagem.src = "./assets/estados-unidos.png";
-    // currencyValue.innerHTML = "US$ 0.00";
   }
 
   if (currencySelect.value == "euro") {
     currencyName.innerHTML = "Euro";
     currencyImagem.src = "./assets/euro.png";
-    // currencyValue.innerHTML = "€ 0.00";
+  }
+
+  if (currencySelect.value == "libra") {
+    currencyName.innerHTML = "£ Libra";
+    currencyImagem.src = "./assets/libra.png";
+  }
+
+  if (currencySelect.value == "btc") {
+    currencyName.innerHTML = "Bitcoin";
+    currencyImagem.src = "./assets/bitcoin.png";
   }
 
   convertValues(event);
